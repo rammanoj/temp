@@ -16,10 +16,12 @@ jobs:
 
       - name: Install Helm
         run: |
-          curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+          curl -s https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
 
       - name: Set HELM environment variable
         run: echo "HELM=$(which helm)" >> $GITHUB_ENV
 
       - name: Check Helm version
-        run: echo "Helm binary location: $HELM"
+        run: |
+          echo "Helm binary location: $HELM"
+          $HELM version
